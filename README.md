@@ -1,8 +1,8 @@
 Japanese Lyrics Site
-********************
+--------------------
 
 Feature
-=======
+-------
 - Login with your Google Account by using OAuth 2.0.
 - User can post lyrics with HTML ruby annotation (ruby, rb, rt, rp tags).
 - The lyrics list can sort by name, artist, origin, modify time.
@@ -10,13 +10,13 @@ Feature
 - User can add comment to each lyrics.
 
 Requirement
-===========
+-----------
 - Python3
 - MySQL
 - A Google OAuth 2.0 Client ID and Secret for web application.
 
 Configuration
-=============
+-------------
 - `config.py`
     - Set the web server information.
     - Set the database name you use.
@@ -25,17 +25,17 @@ Configuration
 - `db/config.py`: Set your database connection information.
 
 Installation
-============
+------------
 - Install Python packages: `pip install -f requirements.txt`
 - Initialize your database: `python -m db $DB_NAME`
 
 Running
-=======
+-------
 - `./main.py`
 - Open your favorite browser and visit your web site.
 
 Known Bugs
-==========
+----------
 - Can't delete lyrics and comment from web. (You should delete from db)
     - It can be a feature!
 - When reset the database, all user need to re-login. Otherwise, the
@@ -47,6 +47,6 @@ Known Bugs
       allow your friends.
 
 Future Work
-===========
+-----------
 - Split pages if there are too many comments.
 
