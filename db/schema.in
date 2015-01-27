@@ -1,0 +1,28 @@
+
+User
+   *u_id: int
+    email: char(255)        # unique key to distinct user.
+    name: char(255)
+    picture: char(255)      # url
+
+
+Song
+   *s_id: int
+    name: char(255)
+    artist: char(255)
+    origin: char(255)
+    lyrics: text
+
+    author: foreign key to User (u_id)
+    time: datetime
+    last_author: foreign key to User (u_id)
+    last_time: datetime             # last modify time
+
+
+Comment
+   *c_id: int
+    s_id: foreign key to Song | null  # null: global comment
+    author: foreign key to User (u_id)
+    time: datetime
+    content: text
+

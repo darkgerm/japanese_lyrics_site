@@ -1,0 +1,9 @@
+# vim swap
+*.swp
+
+# python cache
+__pycache__/
+*.pyc
+
+# application config
+config.py

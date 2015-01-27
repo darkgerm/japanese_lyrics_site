@@ -1,0 +1,15 @@
+
+{% extends 'theme.html' %}
+{% block pagetitle %}登入{% endblock %}
+{% block main_content %}
+
+<h3>Login with:</h3>
+
+<div style="width:200px; height:100px;">
+<a href="{{ url_for('login_with_google') }}" class="thumbnail"
+    style="background:linear-gradient(#FFFFFF,#999999);">
+  <img src="/static/img/google-logo.png">
+</a>
+</div>
+
+{% endblock %}<!-- block body -->

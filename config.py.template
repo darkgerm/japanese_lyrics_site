@@ -1,0 +1,21 @@
+
+# flask setting
+DEBUG = True
+
+HOST = '0.0.0.0'
+PORT = 5000
+SERVER_SECRET_KEY = 'your_secret_key'
+
+
+# mysql setting
+DB_NAME = 'your_db_name'
+
+
+# google oauth setting
+GOOGLE_ID = 'your_google_id'
+GOOGLE_SECRET = 'your_google_secret'
+
+ALLOW_USER = [
+    'list_of_emails_of_allowed_user',
+]
+

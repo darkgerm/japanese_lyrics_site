@@ -1,0 +1,22 @@
+
+<!-- need to give 'cmts' variable -->
+
+<form action="/save_comment" method="post">
+  <div class="form-group">
+    <label>留言</label>
+    <button type="submit" class="btn btn-primary">送出</button>
+    <textarea class="form-control" name="content" rows="1"></textarea>
+  </div>
+
+  <input style="display:none;" name="s_id" value="{% if song %}{{ song.s_id }}{% else %}-1{% endif %}">
+  <input style="display:none;" name="path" value="{{ request.path }}">
+</form>
+
+{% for cmt in cmts %}
+<pre>
+<img src="{{ cmt.author_picture }}" height="30px" width="30px"> {{ cmt.author }} ({{ cmt.time }})
+{{ cmt.content }}
+</pre>
+{% endfor %}
+
+

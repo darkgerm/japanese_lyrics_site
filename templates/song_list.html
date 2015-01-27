@@ -1,0 +1,75 @@
+
+{% extends 'theme.html' %}
+{% block pagetitle %}歌曲列表{% endblock %}
+
+{% block javascript %}
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+google.load("visualization", "1", {packages:["table"]});
+google.setOnLoadCallback(drawTable);
+
+function drawTable() {
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', '歌名');
+    data.addColumn('string', '歌手');
+    data.addColumn('string', '來源');
+    data.addColumn('string', '最後修改時間');
+    //data.addRows([
+    //['Mike',  '$10,000', 'true'],
+    //['Jim',   '$8,000',  'false'],
+    //['Alice', '$12,500', 'true'],
+    //['Bob',   '$7,000',  'true']
+    //]);
+    data.addRows({{ songs | safe }})
+
+    var table = new google.visualization.Table(document.getElementById('table_div'));
+
+    table.draw(data, {showRowNumber: true, allowHtml: true});
+
+
+    ///  // Add our selection handler.
+    ///  google.visualization.events.addListener(table, 'select', selectHandler);
+    ///  
+    ///  // The selection handler.
+    ///  // Loop through all items in the selection and concatenate
+    ///  // a single message from all of them.
+    ///  function selectHandler() {
+    ///    var selection = table.getSelection();
+    ///    var message = '';
+    ///    for (var i = 0; i < selection.length; i++) {
+    ///      var item = selection[i];
+    ///      if (item.row != null && item.column != null) {
+    ///        var str = data.getFormattedValue(item.row, item.column);
+    ///        message += '{row:' + item.row + ',column:' + item.column + '} = ' + str + '\n';
+    ///      } else if (item.row != null) {
+    ///        var str = data.getFormattedValue(item.row, 0);
+    ///        message += '{row:' + item.row + ', column:none}; value (col 0) = ' + str + '\n';
+    ///      } else if (item.column != null) {
+    ///        var str = data.getFormattedValue(0, item.column);
+    ///        message += '{row:none, column:' + item.column + '}; value (row 0) = ' + str + '\n';
+    ///      }
+    ///    }
+    ///    if (message == '') {
+    ///      message = 'nothing';
+    ///    }
+    ///    alert('You selected ' + message);
+    ///  }
+
+}
+</script>
+{% endblock %}
+
+
+
+{% block main_content %}
+
+<h1>歌曲列表
+    <a href="/new" class="btn btn-primary">新增</a>
+</h1>
+
+<div class="row">
+  <div class="col-md-8" id="table_div"></div>
+  <div class="col-md-4">{% include 'comment.html' %}</div>
+</div>
+
+{% endblock %}<!-- block body -->

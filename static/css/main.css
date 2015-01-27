@@ -1,0 +1,22 @@
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+pre.lyrics {
+    font-size: large;
+}
+
+
+/*
+ruby { display: inline-table; text-align: center; white-space: nowrap; text-indent: 0; margin: 0; vertical-align: text-bottom; }
+ruby > rb, ruby > rbc { display: table-row-group; }
+ruby > rt, ruby > rbc + rtc { display: table-header-group; font-size: 60%; line-height: 150%; letter-spacing: 0; }
+ruby > rbc + rtc + rtc { display: table-footer-group; font-size: 60%; line-height: 90%; letter-spacing: 0; }
+rtc > rt[rbspan] { display: table-caption; }
+rp { display: none; }
+span.romaji { margin-left: 1em; font-size: 0.6em; font-style: italic; font-family: 'Trebuchet MS'; color: #777; }
+em.cpinfo { font-size: 15px; color: #22f; }
+*/
+

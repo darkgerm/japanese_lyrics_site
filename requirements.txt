@@ -1,0 +1,5 @@
+flask
+Flask-OAuthlib
+sqlalchemy
+--allow-external mysql-connector-python
+mysql-connector-python

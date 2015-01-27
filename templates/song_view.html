@@ -1,0 +1,40 @@
+
+{% extends 'theme.html' %}
+{% block pagetitle %}{{ song.name }}{% endblock %}
+
+
+{% block main_content %}
+
+<h1>{{ song.name }}
+  <a href="/edit/{{ song.s_id }}" class="btn btn-success">修改</a>
+  <a href="/song_list" class="btn btn-info">返回</a>
+</h1>
+    
+
+<div class="row">
+  <div class="col-md-8" id="table_div">
+
+    <div class="row">
+      <div class="col-md-9">
+        <table class="table table-bordered">
+          <tr><td class="active" width="20%">歌手</td><td>{{ song.artist }}</td></tr>
+          <tr><td class="active">來源</td><td>{{ song.origin }}</td></tr>
+          <tr><td class="active">發文者</td><td>{{ song.author }}</td></tr>
+          <tr><td class="active">最後修改</td><td>{{ song.last_author }}</td></tr>
+        </table>
+      </div>
+    </div>
+    
+    <pre class="lyrics">
+    {{ song.lyrics | safe }}
+    </pre>
+
+    <!-- div style="background-color:#EEEEEE">
+    {{ song.lyrics | safe }}
+    </div -->
+
+
+  </div><!-- col-md-8 -->
+  <div class="col-md-4">{% include 'comment.html' %}</div>
+</div>
+{% endblock %}<!-- block body -->
