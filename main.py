@@ -180,7 +180,7 @@ def song_list():
             song.last_time.strftime('%Y-%m-%d %H:%M:%S'),
         ])
     cmts = db_query_cmts(None)
-    return render_template('song_list.html', songs=songs, cmts=cmts)
+    return render_template('song_list.html', songs=songs[::-1], cmts=cmts)
 
 @app.route('/view/<song_id>')
 @login_required
@@ -237,6 +237,7 @@ def song_save():
             last_time = datetime.today(),
         )
         g.db_session.add(new_song)
+        s_id = new_song.s_id
     else:
         s_id = request.form['s_id']
         song = g.db_session.query(db.Song).filter(db.Song.s_id==s_id).first()
@@ -248,7 +249,7 @@ def song_save():
         song.last_time = datetime.today()
 
     g.db_session.commit()
-    return redirect(url_for('song_list'))
+    return redirect(url_for('song_view', song_id=s_id))
 
 
 @app.route('/save_comment', methods=['POST'])
