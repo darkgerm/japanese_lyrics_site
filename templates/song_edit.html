@@ -13,19 +13,19 @@
   <div class="form-group">
     <label>歌名</label>
     <input class="form-control" name="name" placeholder="歌名"
-        {% if not new %}value={{ song.name }}{% endif %}>
+        {% if not new %}value="{{ song.name }}"{% endif %}>
   </div>
 
   <div class="form-group">
     <label>歌手</label>
     <input class="form-control" name="artist" placeholder="歌手名"
-        {% if not new %}value={{ song.artist }}{% endif %}>
+        {% if not new %}value="{{ song.artist }}"{% endif %}>
   </div>
 
   <div class="form-group">
     <label>來源</label>
     <input class="form-control" name="origin" placeholder="來源"
-        {% if not new %}value={{ song.origin }}{% endif %}>
+        {% if not new %}value="{{ song.origin }}"{% endif %}>
   </div>
 
   <div class="form-group">
