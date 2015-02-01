@@ -13,8 +13,9 @@
 </form>
 
 {% for cmt in cmts %}
-<pre>
-<img src="{{ cmt.author_picture }}" height="30px" width="30px"> {{ cmt.author }} ({{ cmt.time }})
+<pre
+><span style="font-weight:bold; font-size:120%">#{{ cmt.floor }} </span
+><img src="{{ cmt.author_picture }}" height="30px" width="30px"> {{ cmt.author }} ({{ cmt.time }})
 {{ cmt.content }}
 </pre>
 {% endfor %}

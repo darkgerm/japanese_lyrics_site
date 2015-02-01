@@ -12,6 +12,7 @@ from flask import jsonify
 from flask import render_template
 from flask import g
 from flask_oauthlib.client import OAuth
+from sqlalchemy import desc
 
 import config
 import db
@@ -56,16 +57,21 @@ def db_save_user(email, name, picture):
 
 def db_query_cmts(s_id):
     '''query all cmts. s_id: None means global'''
-    query_cmts = g.db_session.query(db.Comment).filter(db.Comment.s_id==s_id)
+    query_cmts = (
+        g.db_session.query(db.Comment)
+        .filter(db.Comment.s_id==s_id)
+        .order_by(desc(db.Comment.time))
+    )
     cmts = []
-    for cmt in query_cmts:
+    for idx, cmt in enumerate(query_cmts):
         cmts.append({
+            'floor': query_cmts.count() - idx,
             'author': cmt.Author.name.decode(),
             'author_picture': cmt.Author.picture.decode(),
             'time': cmt.time.strftime('%Y-%m-%d %H:%M:%S'),
             'content': cmt.content.decode(),
         })
-    return cmts[::-1]
+    return cmts
 
 
 #################### Google OAuth2 ####################
