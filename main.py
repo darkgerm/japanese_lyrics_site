@@ -243,7 +243,8 @@ def song_save():
             last_time = datetime.today(),
         )
         g.db_session.add(new_song)
-        s_id = new_song.s_id
+        g.db_session.commit()
+        s_id = new_song.s_id        # s_id only available after commit.
     else:
         s_id = request.form['s_id']
         song = g.db_session.query(db.Song).filter(db.Song.s_id==s_id).first()
@@ -253,8 +254,8 @@ def song_save():
         song.lyrics = request.form['lyrics']
         song.last_author = session['u_id']
         song.last_time = datetime.today()
+        g.db_session.commit()
 
-    g.db_session.commit()
     return redirect(url_for('song_view', song_id=s_id))
 
 
